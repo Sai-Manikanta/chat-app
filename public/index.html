@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ==" crossorigin="anonymous" />
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <div class="flex items-center justify-center bg-blue-100 max-w-screen-md h-screen mx-auto">
+    <div>
+      <h1 class="text-center text-3xl text-blue-600">Login</h1>
+      <form class="flex flex-col mt-3" id="form">
+        <input class="px-2 py-1 rounded" id="name" type="text" placeholder="Enter Name" />
+        <input class="mt-2 py-1 px-2 rounded" id="password" type="password" placeholder="Password" />
+        <div id="error"></div>
+        <button class="bg-blue-600 px-1 py-1 text-white mt-2 rounded">Login</button>
+      </form>
+    <div>
+  </div>
+  <script>
+    const form = document.getElementById('form');
+    const nameInput = document.getElementById('name');
+    const passwordInput = document.getElementById('password');
+    const errorElement = document.getElementById('error');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = nameInput.value;
+        const password = passwordInput.value;
+
+        if(((name == "Friend1") || (name == "Friend2")) && ((password == "Susheela") || (password == "Sep6"))) {
+            window.location.replace(`/learn.html?name=${name}`);
+        } else {
+            errorElement.textContent = "Enter Currect Details...";
+        }
+    })
+
+    nameInput.addEventListener('keypress', () => {
+        errorElement.textContent = "";
+    })
+
+    passwordInput.addEventListener('keypress', () => {
+        errorElement.textContent = "";
+    })
+  </script>
+</body>
+</html>
