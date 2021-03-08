@@ -44,7 +44,7 @@ form.addEventListener('submit', (e) => {
     messageInput.value = "";
 })
 
-messageInput.addEventListener('keypress', () => {
+messageInput.addEventListener('keyup', () => {
     socket.emit('typing', name);
 })
 
