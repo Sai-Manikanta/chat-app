@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn</title>
+    <link rel="stylesheet" href="./styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" integrity="sha512-wl80ucxCRpLkfaCnbM88y4AxnutbGk327762eM9E/rRTvY/ZGAHWMZrYUq66VQBYMIYDFpDdJAOGSLyIPHZ2IQ==" crossorigin="anonymous" />
     <script src="/socket.io/socket.io.js"></script>
 </head>
@@ -16,16 +17,20 @@
         <button class="px-2 py-1 bg-red-400 rounded text-white text-sm" id="clear-btn">Clear</button>
       </div>
     </div>
-    <form class="flex flex-row items-center w-full pt-3" id="messages-form" autocomplete="off">
-      <input type="password" placeholder="Enter Password to Load..." id="load-password" class="p-2 border outline-none flex-grow rounded rounded-r-none" autocomplete="off" />
-      <button class="bg-blue-400 rounded-l-none px-2 py-2 rounded text-white" id="data-btn">Load</button>
-    </form>
-    <div class="flex-grow bg-white rounded p-2 mt-2 overflow-scroll" id="output">
+    <div id="load-box">
+      <form class="flex flex-row items-center w-full pt-3" id="messages-form" autocomplete="off">
+        <input type="password" placeholder="Password to Load Course" id="load-password" class="p-2 border outline-none flex-grow rounded rounded-r-none" autocomplete="off" />
+        <button class="bg-blue-400 rounded-l-none px-2 py-2 rounded text-white" id="data-btn">Load</button>
+      </form> 
     </div>
-    <form class="flex flex-col w-full pt-3" id="form" autocomplete="off">
-      <input type="text" placeholder="Type a Course" id="message" class="p-2 border outline-none" autocomplete="off" />
-      <button class="bg-blue-400 mt-4 px-1 py-2 rounded text-white" id="send-btn">Send</button>
-    </form>  
+    <div class="display-none flex-grow bg-white rounded p-2 mt-2 overflow-scroll" id="output">
+    </div>
+    <div class="display-none" id="message-box">
+      <form class="flex flex-col w-full pt-3" id="form" autocomplete="off">
+        <input type="text" placeholder="Type a message" id="message" class="p-2 border outline-none" autocomplete="off" />
+        <button class="bg-blue-400 mt-4 px-1 py-2 rounded text-white" id="send-btn">Send Chey Bey...</button>
+      </form>  
+    </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="./chat.js"></script>

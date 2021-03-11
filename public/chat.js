@@ -7,9 +7,12 @@ const typing = document.getElementById('typing');
 const typingOutput = document.getElementById('typing-output');
 const sendBtn = document.getElementById("send-btn");
 const clearBtn = document.getElementById("clear-btn");
+const messageBox = document.getElementById("message-box");
 
 const messageForm = document.getElementById("messages-form");
 const loadPasswordInput = document.getElementById("load-password");
+
+const loadBox = document.getElementById("load-box");
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -56,7 +59,7 @@ clearBtn.addEventListener('click', () => {
 })
 
 // listening to events
-let messages;
+let messages = "";
 
 socket.on('chat', (msgs) => {
     if(msgs.length){
@@ -75,6 +78,11 @@ messageForm.addEventListener('submit', (e) => {
             }
 
             outputElement.innerHTML = eles;
+            outputElement.classList.add("display");
+            messageBox.classList.add("display");
+            loadBox.classList.add("display-none");
+    } else {
+        window.alert("Wrong password...");
     }
 })
 
