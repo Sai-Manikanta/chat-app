@@ -8,6 +8,9 @@ const typingOutput = document.getElementById('typing-output');
 const sendBtn = document.getElementById("send-btn");
 const clearBtn = document.getElementById("clear-btn");
 
+const messageForm = document.getElementById("messages-form");
+const loadPasswordInput = document.getElementById("load-password");
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const name = urlParams.get('name');
@@ -53,14 +56,25 @@ clearBtn.addEventListener('click', () => {
 })
 
 // listening to events
-socket.on('chat', (messages) => {
-    if(messages.length){
-        let eles = "";
-        for(var i = 0;i < messages.length; i++){
-            eles += `<p class=${messages[i].name == 'Friend1' ? 'text-indigo-400' : 'text-pink-400'}>${messages[i].message}</p>`;
-        }
-        
-        outputElement.innerHTML = eles;
+let messages;
+
+socket.on('chat', (msgs) => {
+    if(msgs.length){
+        messages = msgs;
+    }
+})
+
+// messages loading
+messageForm.addEventListener('submit', (e) => {
+     e.preventDefault();
+
+     if(loadPasswordInput.value == "Sep6"){
+            let eles = "";
+            for(var i = 0;i < messages.length; i++){
+                eles += `<p class=${messages[i].name == 'Friend1' ? 'text-indigo-400' : 'text-pink-400'}>${messages[i].message}</p>`;
+            }
+
+            outputElement.innerHTML = eles;
     }
 })
 
