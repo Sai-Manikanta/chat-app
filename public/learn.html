@@ -50,10 +50,12 @@
           </button>
         </form>
       </div>
+
       <div
         class="display-none flex-grow bg-white rounded p-2 mt-2 overflow-scroll"
         id="output"
       ></div>
+
       <div class="display-none" id="message-box">
         <form class="flex w-full pt-3" id="form" autocomplete="off">
           <input
@@ -64,7 +66,7 @@
             autocomplete="off"
           />
           <button
-            class="bg-blue-400 hover:bg-blue-600 flex items-center py-2 px-3 rounded-r text-white focus:outline-none"
+            class="bg-blue-400 hover:bg-blue-500 flex items-center py-2 px-3 rounded-r text-white focus:outline-none"
             id="send-btn"
           >
             <svg
@@ -80,6 +82,8 @@
             </svg>
           </button>
         </form>
+        <!--below div added to visibility of above div-->
+        <div class="h-12"></div>
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
