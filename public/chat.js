@@ -10,7 +10,7 @@ const clearBtn = document.getElementById("clear-btn");
 const messageBox = document.getElementById("message-box");
 
 const messageForm = document.getElementById("messages-form");
-const loadPasswordInput = document.getElementById("load-password");
+const loadPasswordInput = document.getElementById("textpass");
 
 const loadBox = document.getElementById("load-box");
 
