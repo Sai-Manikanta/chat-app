@@ -59,10 +59,13 @@ mongo.connect(mongodbURI, (err, db) => {
                 var ISTOffset = 330;   // IST offset UTC +5:30 
                 var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
                 // ISTTime now represents the time in IST coordinates
-                var hoursIST = addZero(ISTTime.getHours());
-                var minutesIST = addZero(ISTTime.getMinutes());
+                var hours = ISTTime.getHours();
+                var AmOrPm = hours >= 12 ? 'pm' : 'am';
+                hours = (hours % 12) || 12;
+                var hoursFormated = addZero(hours);
+                var minutes = addZero(ISTTime.getMinutes());
 
-                const time = `${hoursIST}:${minutesIST}`;
+                const time = `${hoursFormated}:${minutes}${" "}${AmOrPm}`;
 
                 // Insert message
                 chat.insert({name: name, message: message, time: time }, function(){
