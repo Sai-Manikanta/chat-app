@@ -65,7 +65,9 @@ socket.on('chat', (msgs) => {
     if(msgs.length){
         messages = msgs;
     }
-})
+});
+
+console.log(messages);
 
 // messages loading
 messageForm.addEventListener('submit', (e) => {
@@ -76,7 +78,7 @@ messageForm.addEventListener('submit', (e) => {
      if(loadPasswordInput.value == "Sep6"){
             let eles = "";
             for(var i = 0;i < messages.length; i++){
-                eles += `<p class=${messages[i].name == 'Friend1' ? 'text-indigo-400' : 'text-pink-400'}>${messages[i].message}</p>`;
+                eles += `<p class=${messages[i].name == 'Friend1' ? 'text-indigo-400' : 'text-pink-400'}><span class="text-gray-400 text-xs">${messages[i].time}${" "}</span>${messages[i].message}</p>`;
             }
 
             outputElement.innerHTML = eles;
