@@ -50,14 +50,19 @@ mongo.connect(mongodbURI, (err, db) => {
                 sendStatus('Please enter a name and message');
 
             } else {
-                // creating time
-                const today = new Date();
                 function addZero(num){
                     return num < 10 ? `0${num}`:num;
                 }
-                const hours = addZero(today.getHours());
-                const minutes = addZero(today.getMinutes());
-                const time = `${hours}:${minutes}`;
+                
+                var currentTime = new Date();
+                var currentOffset = currentTime.getTimezoneOffset();
+                var ISTOffset = 330;   // IST offset UTC +5:30 
+                var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+                // ISTTime now represents the time in IST coordinates
+                var hoursIST = addZero(ISTTime.getHours());
+                var minutesIST = addZero(ISTTime.getMinutes());
+
+                const time = `${hoursIST}:${minutesIST}`;
 
                 // Insert message
                 chat.insert({name: name, message: message, time: time }, function(){
