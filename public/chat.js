@@ -67,13 +67,9 @@ socket.on('chat', (msgs) => {
     }
 });
 
-console.log(messages);
-
 // messages loading
 messageForm.addEventListener('submit', (e) => {
      e.preventDefault();
-
-     // testing for deploy - this comment not about any thing
 
      if(loadPasswordInput.value == "Sep6"){
             let eles = "";
