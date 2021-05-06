@@ -50,9 +50,17 @@ mongo.connect(mongodbURI, (err, db) => {
                 sendStatus('Please enter a name and message');
 
             } else {
+                // creating time
+                const today = new Date();
+                function addZero(num){
+                    return num < 10 ? `0${num}`:num;
+                }
+                const hours = addZero(today.getHours());
+                const minutes = addZero(today.getMinutes());
+                const time = `${hours}:${minutes}`;
 
                 // Insert message
-                chat.insert({name: name, message: message}, function(){
+                chat.insert({name: name, message: message, time: time }, function(){
                     io.sockets.emit('output', [data]);
 
                     // Send status object
