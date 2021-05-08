@@ -103,3 +103,18 @@ socket.on('typing', (data) => {
 socket.on('cleared', () => {
     outputElement.innerHTML = "";
 })
+
+// notification
+const notificationBtn = document.getElementById("notification-btn");
+
+notificationBtn.addEventListener("click", () => {
+    fetch('https://stark-savannah-58284.herokuapp.com/notify')
+        .then(response => response.json())
+        .then(json => {
+            window.alert("Notified...");
+         })
+        .catch(err => {
+            console.log("Error", err);
+            window.alert("Error...");
+    })
+})
